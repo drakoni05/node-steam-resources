@@ -14,7 +14,7 @@ class MsgClientGenericResponse<EMsg::Invalid>
 class MsgChannelEncryptRequest<EMsg::ChannelEncryptRequest>
 {
 	const uint PROTOCOL_VERSION = 1;
-	
+
 	uint protocolVersion = MsgChannelEncryptRequest::PROTOCOL_VERSION;
 	EUniverse universe = EUniverse::Invalid;
 };
@@ -44,7 +44,7 @@ class MsgClientNewLoginKeyAccepted<EMsg::ClientNewLoginKeyAccepted>
 class MsgClientLogon<EMsg::ClientLogon>
 {
 	const uint ObfuscationMask = 0xBAADF00D;
-	const uint CurrentProtocol = 65579;
+	const uint CurrentProtocol = 65580;
 
 	const uint ProtocolVerMajorMask = 0xFFFF0000;
 	const uint ProtocolVerMinorMask = 0xFFFF;
@@ -67,7 +67,11 @@ class MsgClientLogon<EMsg::ClientLogon>
 	const ushort ProtocolVerMinorMinForMachineAuth = 33;
 	const ushort ProtocolVerMinorMinForSessionIDLastAnon = 36;
 	const ushort ProtocolVerMinorMinForEnhancedAppList = 40;
+	const ushort ProtocolVerMinorMinForSteamGuardNotificationUI = 41;
+	const ushort ProtocolVerMinorMinForProtoBufServiceModuleCalls = 42;
 	const ushort ProtocolVerMinorMinForGzipMultiMessages = 43;
+	const ushort ProtocolVerMinorMinForNewVoiceCallAuthorize = 44;
+	const ushort ProtocolVerMinorMinForClientInstanceIDs = 44;
 };
 
 class MsgClientVACBanStatus<EMsg::ClientVACBanStatus>
@@ -97,7 +101,7 @@ class MsgClientUpdateGuestPassesList<EMsg::ClientUpdateGuestPassesList>
 };
 
 class MsgClientRequestedClientStats<EMsg::ClientRequestedClientStats>
-{	
+{
 	int countStats;
 };
 
@@ -268,18 +272,7 @@ class MsgClientChatActionResult<EMsg::ClientChatActionResult>
 class MsgClientChatRoomInfo<EMsg::ClientChatRoomInfo>
 {
 	steamidmarshal ulong steamIdChat;
-	EChatInfoType type;	
-};
-
-class MsgClientGetNumberOfCurrentPlayers<EMsg::ClientGetNumberOfCurrentPlayers>
-{
-	gameidmarshal ulong gameID;
-};
-
-class MsgClientGetNumberOfCurrentPlayersResponse<EMsg::ClientGetNumberOfCurrentPlayersResponse>
-{
-	EResult result;
-	uint numPlayers;
+	EChatInfoType type;
 };
 
 class MsgClientSetIgnoreFriend<EMsg::ClientSetIgnoreFriend>
@@ -292,8 +285,7 @@ class MsgClientSetIgnoreFriend<EMsg::ClientSetIgnoreFriend>
 
 class MsgClientSetIgnoreFriendResponse<EMsg::ClientSetIgnoreFriendResponse>
 {
-	ulong unknown;
-
+	steamidmarshal ulong friendId;
 	EResult result;
 };
 
@@ -314,14 +306,14 @@ class MsgClientLogOnResponse<EMsg::ClientLogOnResponse>
 	uint serverRealTime;
 };
 
-class MsgClientSendGuestPass<EMsg::ClientSendGuestPass>
+class MsgClientSendGuestPass<EMsg::ClientSendGuestPass> removed
 {
 	ulong giftId;
 	byte giftType;
 	uint accountId;
 };
 
-class MsgClientSendGuestPassResponse<EMsg::ClientSendGuestPassResponse>
+class MsgClientSendGuestPassResponse<EMsg::ClientSendGuestPassResponse> removed
 {
 	EResult result;
 };

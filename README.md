@@ -1,14 +1,13 @@
 # node-steam-resources
 
-This is a node wrapper around Steam resources ([Protobufs](https://github.com/SteamRE/SteamKit/tree/master/Resources/Protobufs) and [SteamLanguage](https://github.com/SteamRE/SteamKit/tree/master/Resources/SteamLanguage)) from [SteamKit](https://github.com/SteamRE/SteamKit). It's primarily intended for [node-steam](https://github.com/seishun/node-steam) extension module authors.
+This is a node wrapper around Steam resources ([Protobufs](https://github.com/SteamDatabase/Protobufs) and [SteamLanguage](https://github.com/SteamRE/SteamKit/tree/master/Resources/SteamLanguage)). It's primarily intended for [node-steam](https://github.com/seishun/node-steam) extension module authors.
 
 # Installation
 
-1. `npm install git://github.com/seishun/node-steam-resources.git`
-2. Run `npm install` in the `steam-resources` directory to run the `prepublish` script (see [npm/npm#3055](https://github.com/npm/npm/issues/3055)). It pulls the Steam resources from SteamKit and requires `svn`.
-3. If you're going to publish your module, add `steam-resources` to `bundledDependencies` in your `package.json`, since you want to publish with the resources bundled. Note that `npm publish` will bundle the dependencies of `steam-resources` as well. You could delete `steam-resources/node_modules` manually before publishing, but npm <3 doesn't install dependencies of bundled dependencies automatically.
+1. Run `npm install seishun/node-steam-resources`. It fetches the Steam resources and requires `svn`.
+2. If you're going to publish your module, add `steam-resources` to `bundledDependencies` in your `package.json`, since you want to publish with the resources bundled. Note that `npm publish` will bundle the dependencies of `steam-resources` as well.
 
-If you ever need to update the resources, just run `npm install` in the `steam-resources` directory again.
+If you ever need to update the resources, just run `npm install seishun/node-steam-resources` again.
 
 # Usage
 
@@ -26,9 +25,9 @@ For example, `Steam.EClanPermission.OwnerOfficerModerator` is equal to `11`.
 
 # Protobufs
 
-For each protobuf message or enum available in SteamKit2, there is an equivalently named class or enum generated using [ProtoBuf.js](https://github.com/dcodeIO/ProtoBuf.js) version [^4.1](https://docs.npmjs.com/misc/semver#caret-ranges-1-2-3-0-2-5-0-0-4). They lie in the same hierarchy as in SteamKit2, with objects for namespaces. (If you see a mismatch, consider that a bug.)
+For each protobuf message or enum available in SteamKit2, there is an equivalently named class or enum generated using [ProtoBuf.js](https://github.com/dcodeIO/ProtoBuf.js) version [^4.1](https://docs.npmjs.com/misc/semver#caret-ranges-123-025-004). They lie in the same hierarchy as in SteamKit2, with objects for namespaces. (If you see a mismatch, consider that a bug.)
 
-For example, the `CMsgGCTopCustomGamesList` message from [dota_gcmessages_common.proto](https://github.com/SteamRE/SteamKit/blob/master/Resources/Protobufs/dota/dota_gcmessages_common.proto) is available as `SteamKit2.GC.Dota.Internal.CMsgGCTopCustomGamesList` in SteamKit2 and as `Steam.GC.Dota.Internal.CMsgGCTopCustomGamesList` here.
+For example, the `CMsgGCTopCustomGamesList` message from [dota_gcmessages_common.proto](https://github.com/SteamDatabase/Protobufs/blob/master/dota2/dota_gcmessages_common.proto) is available as `SteamKit2.GC.Dota.Internal.CMsgGCTopCustomGamesList` in SteamKit2 and as `Steam.GC.Dota.Internal.CMsgGCTopCustomGamesList` here.
 
 # Structs
 
