@@ -1,5 +1,6 @@
 {
   "name": "steam-resources",
+  "main": "index.js",
   "version": "1.2.2",
   "description": "Steam resources for Node.js",
   "scripts": {
